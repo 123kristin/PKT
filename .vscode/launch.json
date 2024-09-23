@@ -1,0 +1,183 @@
+{
+    
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${file}"
+        },
+        {
+            "name": "data_process_assist2009",
+            "type": "python",
+            "request": "launch",
+            "module": "examples.data_preprocess",
+            "justMyCode": true,
+            "args": [
+            "-d", "assist2009",
+            "-f", "../pykt-toolkit-main/data/assist2009/skill_builder_data_corrected_collapsed.csv",
+            "-l", "88",
+            ],
+            "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+            }
+         },
+
+         {
+             "name": "data_process_assist2012",
+             "type": "python",
+             "request": "launch",
+             "module": "examples.data_preprocess",
+             "justMyCode": true,
+             "args": [
+                    "-d", "assist2012",
+                    "-f", "../pykt-toolkit-main/data/assist2012/2012-2013-data-with-predictions-4-final.csv",
+                    "-l", "99",
+            ],
+             "env": {
+                     "CUDA_VISIBLE_DEVICES": "2"
+            }
+        },
+        
+        {
+            "name": "data_process_nips",
+            "type": "python",
+            "request": "launch",
+            "module": "examples.data_preprocess",
+            "justMyCode": true,
+            "args": [
+                    "-d", "nips_task34",
+                     "-f", "../pykt-toolkit-main/data/nips_task34/train_task_3_4.csv",
+                    
+           ],
+            "env": {
+            "CUDA_VISIBLE_DEVICES": "3"
+           }
+        },
+        
+         {
+            "name": "data_process_2015",
+            "type": "python",
+            "request": "launch",
+            "module": "examples.data_preprocess",
+            "justMyCode": true,
+            "args": [
+            "-d", "assist2015",
+            "-f", "../pykt-toolkit-main/data/assist2015/2015_100_skill_builders_main_problems.csv",
+            "-l", "36",
+            ],
+            "env": {
+            "CUDA_VISIBLE_DEVICES": "1"
+            }
+         },
+       
+            {
+                "name": "PKT_train_2009",
+                "type": "python",
+                "request": "launch",
+                "module": "examples.wandb_pkt_train",
+                "justMyCode": true,
+                "args": [
+                "--dataset_name", "assist2009",
+                "--use_wandb", "0",
+                "--emb_size", "256",
+                "--embed_dropout", "0.9",
+                "--cell_dropout", "0.7",
+                "--out_dropout", "0.1",
+                "--final_dropout", "0.4",
+                "--learning_rate", "1e-3",
+                "--n_label", "4"
+              
+                ],
+                "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                "PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT": "2",
+                }
+            },
+          
+            {
+                "name": "PKT_train_2012",
+                "type": "python",
+                "request": "launch",
+                "module": "examples.wandb_pkt_train",
+                "justMyCode": true,
+                "args": [
+                "--dataset_name", "assist2012",
+                "--use_wandb", "0",
+                "--emb_size", "4",
+                "--embed_dropout", "0.2",
+                "--cell_dropout", "0.1",
+                "--out_dropout", "0.2",
+                "--final_dropout", "0.4",
+                "--learning_rate", "3e-3",
+                "--n_label", "2"
+              
+                ],
+                "env": {
+                "CUDA_VISIBLE_DEVICES": "1",
+                "PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT": "2",
+                }
+            },
+          
+            {
+                "name": "PKT_train_nips",
+                "type": "python",
+                "request": "launch",
+                "module": "examples.wandb_pkt_train",
+                "justMyCode": true,
+                "args": [
+                "--dataset_name", "nips_task34",
+                "--use_wandb", "0",
+                "--emb_size", "256",
+                "--embed_dropout", "0.7",
+                "--cell_dropout", "0.6",
+                "--out_dropout", "0.2",
+                "--final_dropout", "0.5",
+                "--learning_rate", "1e-3",
+                "--n_label", "4",
+              
+                ],
+                "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                "PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT": "2",
+                }
+            },
+       
+            {
+                "name": "PKT_train_2015",
+                "type": "python",
+                "request": "launch",
+                "module": "examples.wandb_pkt_train",
+                "justMyCode": true,
+                "args": [
+                "--dataset_name", "assist2015",
+                "--use_wandb", "0",
+                "--emb_size", "4",
+                ],
+                "env": {
+                "CUDA_VISIBLE_DEVICES": "2",
+                "PYDEVD_WARN_SLOW_RESOLVE_TIMEOUT": "2",
+                }
+            },
+            
+            {
+                "name": "PKT_test",
+                  "type": "python",
+                  "request": "launch",
+                  "module": "examples.wandb_predict",
+                  "justMyCode": true,
+                 "args": [
+                  "--use_wandb", "0",
+                 ],
+                 "env": {
+                 "CUDA_VISIBLE_DEVICES": "0"
+                 }
+                 
+             },
+         
+    ]
+}
