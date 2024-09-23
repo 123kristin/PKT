@@ -18,6 +18,11 @@ source activate pykt
 pip install -U pykt-toolkit -i  https://pypi.python.org/simple 
 ```
 
+## Running PKT
+To run our code, we provide configuration files for data preprocessing and model execution to support debugging. For detailed instructions, refer to the .vscode/launch.json file.
+
+
+
 ## References
 ### Projects
 https://github.com/pykt-team/pykt-toolkit
